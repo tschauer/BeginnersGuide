@@ -1,0 +1,41 @@
+---
+title: "Alignment using Bowtie2"
+author: Tamas Schauer
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Quick Intro to Command Line
+
+* Open the Terminal app from /Applications/Utilities on your Mac
+* Check the following commands
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# change to home directory
+cd ~
+
+# print working directory
+pwd
+
+# make new directory
+mkdir Software
+
+# list files
+ls -l
+
+# manual page of cp command
+man cp
+```
+
+
+## Install Bowtie2
+
+* ...
