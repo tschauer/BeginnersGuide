@@ -1,0 +1,127 @@
+---
+title: "Alignment using STAR"
+author: Tamas Schauer
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Quick Intro to Command Line
+
+* Open the Terminal app from /Applications/Utilities on your Mac
+* Important! 
+* Change Terminal shell to bash:
+    * Go to Terminal > Preferences > General
+    * Shell opens with: Command (complete path): **/bin/bash**
+* Check the following commands
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# change to home directory
+cd ~
+
+# print working directory
+pwd
+
+# make new directory
+mkdir Software
+
+# list files
+ls -l
+
+# manual page of cp command
+man cp
+```
+
+
+## Install STAR
+
+* STAR executables are available on github
+* download and extract the files
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# change to Software directory
+cd ~/Software
+
+# download from github
+curl -LO https://github.com/alexdobin/STAR/archive/2.7.4a.zip
+
+# extract zip file
+unzip 2.7.4a.zip
+```
+
+
+```{bash, comment=NA}
+# change directory to STAR executable files
+cd ~/Software/STAR-2.7.4a/bin/MacOSX_x86_64
+
+# list files
+ls -l
+```
+
+```{bash, eval=FALSE}
+# print full path of STAR executables directory
+pwd
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Software/STAR-2.7.4a/bin/MacOSX_x86_64
+pwd
+```
+
+### Make STAR available for Terminal
+
+#### Option 1
+
+```{bash, eval=FALSE}
+# create symbolic link
+# you need to do this as superuser using sudo
+sudo ln -s /Users/tschauer/Software/STAR-2.7.4a/bin/MacOSX_x86_64/STAR /usr/local/bin
+sudo ln -s /Users/tschauer/Software/STAR-2.7.4a/bin/MacOSX_x86_64/STARlong /usr/local/bin
+```
+
+#### Option 2
+
+```{bash, eval=FALSE}
+# start from the home directory
+cd ~   
+
+# create .bash_profile (if you don´t have it)
+touch .bash_profile
+
+# open .bash_profile in Atom or TextEdit (or which ever text editor)
+open -a Atom .bash_profile
+open -a TextEdit .bash_profile
+
+# add the following line with your path of STAR to the .bash_profile file
+PATH=/Users/tschauer/Software/STAR-2.7.4a/bin/MacOSX_x86_64:$PATH
+# save and close window
+
+# source .bash_profile
+source .bash_profile
+
+# print .bash_profile
+cat .bash_profile
+```
+
+
+
+### Check Help Page 
+
+```{bash, comment=NA}
+# start from the home directory
+cd ~   
+
+# get first few lines of help page
+STAR -h | head
+```
+
+
+## Create STAR Index 
+
