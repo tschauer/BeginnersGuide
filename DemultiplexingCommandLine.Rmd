@@ -1,0 +1,230 @@
+---
+title: "Demultiplexing FastQ Files in the Command Line"
+author: Tamas Schauer
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Quick Intro to Command Line
+
+* Open the Terminal app from /Applications/Utilities on your Mac
+* Check the following commands
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# change to home directory
+cd ~
+
+# print working directory
+pwd
+
+# make new directory
+mkdir Software
+
+# list files
+ls -l
+
+# manual page of cp command
+man cp
+```
+
+
+## Install JE demultiplexer
+
+* JE is available on github
+* download and extract the files
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# change to Software directory
+cd ~/Software
+
+# download from github
+git clone https://github.com/gbcs-embl/Je.git
+
+# copy given version to current directory (.)
+cp Je/dist/je_2.0.RC.tar.gz .
+
+# extract
+tar xzf je_2.0.RC.tar.gz
+
+# remove the rest (caution: -rf option removes recursively everything without asking!)
+rm -rf Je
+```
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+# check JE manual main page
+~/Software/je_2.0.RC/je 
+
+# manual for demultiplex-illu
+~/Software/je_2.0.RC/je demultiplex-illu
+```
+
+
+## Setup Project Directory
+
+* create directory structure
+* copy fastq files
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+# start from the home directory
+cd ~
+
+# create Projects and Project01 sub-directory
+mkdir -p Projects/Project01
+
+# change to Project01 directory
+cd Projects/Project01
+
+# create a directory for fastq files
+mkdir FastQ
+
+# copy fastq files from Downloads (or where they are) to FastQ directory 
+# Note that asterisk is a "wildcard" (any number of unknown characters)
+cp ~/Downloads/test_R*.fastq.gz FastQ
+
+# use mv (move files) instead of cp (copy) to avoid redundancy
+```
+
+### Barcode File
+
+* create a barcode file in your text editor (my favorite: Atom)
+* tab-delimited txt file with 2 columns
+* no header in the first line
+* place it also into the FastQ directory
+
+```{r, echo=FALSE}
+library(knitr)
+library(kableExtra)
+
+df <- rbind(
+c("sample01", "TTAGGCAT"),
+c("sample02", "TGACCAAT"),
+c("sample03", "ACAGTGAT"),
+c("sample04", "GCCAATAT"))
+
+write.table(df, "~/Projects/Project01/FastQ/test_barcodes.txt", sep="\t", quote = F, col.names = F, row.names = F)
+
+x = kable(df, format="html") %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+gsub("<thead>.*</thead>", "", x)
+```
+
+
+```{bash, comment=NA}
+# change to FastQ directory
+cd ~/Projects/Project01/FastQ 
+
+# list files
+ls -l
+```
+
+* look into barcode file
+
+```{bash, comment=NA, eval=FALSE}
+# cat prints files
+cat test_barcodes.txt
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+cat test_barcodes.txt
+```
+
+
+
+### FastQ Files
+
+* look into R1 file (sample reads)
+
+```{bash, comment=NA, eval=FALSE}
+# zcat decompresses and prints files
+# | is the pipe symbol (output of zcat goes to the next command)
+# head prints the first n lines (-n)
+zcat < test_R1.fastq.gz | head -n 12
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+zcat < test_R1.fastq.gz | head -n 12
+```
+
+
+* look into R2 file (index reads)
+
+```{bash, comment=NA, eval=FALSE}
+# tail prints the last n lines (-n)
+zcat < test_R2.fastq.gz | tail -n 12
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+zcat < test_R2.fastq.gz | tail -n 12
+```
+
+* count lines in file
+
+```{bash, comment=NA, eval=FALSE}
+# wc (word count) counts lines (-l)
+# each read has 4 lines, so the number of reads is 1/4 of lines
+zcat < test_R2.fastq.gz | wc -l
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+zcat < test_R2.fastq.gz | wc -l
+```
+
+
+## Run Je
+
+* F1= fastq file for demultiplexing
+* BF= barcode text file
+* I1= fastq file with barcode reads
+
+
+```{bash, comment=NA, eval=FALSE}
+~/Software/je_2.0.RC/je demultiplex-illu  F1= test_R1.fastq.gz BF= test_barcodes.txt I1= test_R2.fastq.gz
+```
+
+```{bash, comment=NA, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+cd ~/Projects/Project01/FastQ 
+~/Software/je_2.0.RC/je demultiplex-illu  F1= test_R1.fastq.gz BF= test_barcodes.txt I1= test_R2.fastq.gz
+```
+
+
+
+
+```{bash, comment=NA, eval=FALSE}
+# list files
+ls -l
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+ls -l
+```
+
+
+
+
+```{bash, comment=NA, eval=FALSE}
+# look at stats output
+cat jemultiplexer_out_stats.txt  
+```
+
+```{bash, comment=NA, echo=FALSE}
+cd ~/Projects/Project01/FastQ 
+cat jemultiplexer_out_stats.txt  
+```
+
+
+
+
+
