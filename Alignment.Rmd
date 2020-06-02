@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * Open the Terminal app from /Applications/Utilities on your Mac
 * Check the following commands
 
-```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide'}
+```{sh, comment=NA, message=FALSE, warning=FALSE, results='hide'}
 # change to home directory
 cd ~
 
