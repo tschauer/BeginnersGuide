@@ -469,8 +469,17 @@ cat .bash_profile</code></pre>
 cd ~   
 
 # get first few lines of help page
-STAR -h | head</code></pre>
-<pre><code>bash: line 4: STAR: command not found</code></pre>
+STAR --help | head
+</code></pre>
+<pre><code>Usage: STAR  [options]... --genomeDir /path/to/genome/index/   --readFilesIn R1.fq R2.fq
+Spliced Transcripts Alignment to a Reference (c) Alexander Dobin, 2009-2019
+
+For more details see:
+&lt;https://github.com/alexdobin/STAR&gt;
+&lt;https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf&gt;
+### versions
+versionGenome           2.7.4a
+    string: earliest genome index version compatible with this STAR release. Please do not change this value!</code></pre>
 </div>
 </div>
 <div id="create-star-index" class="section level2">

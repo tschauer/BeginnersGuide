@@ -12,6 +12,10 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{bash, echo=FALSE}
+rm /Users/tschauer/Software/2.7.4a.zip
+rm -r /Users/tschauer/Software/STAR-2.7.4a
+```
 
 ## Quick Intro to Command Line
 
@@ -119,8 +123,11 @@ cat .bash_profile
 cd ~   
 
 # get first few lines of help page
-STAR -h | head
+STAR --help | head
+
 ```
+
+
 
 
 ## Create STAR Index 
