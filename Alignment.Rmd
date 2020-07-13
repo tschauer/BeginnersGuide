@@ -38,6 +38,8 @@ mkdir Software
 
 ## Install Bowtie2
 
+### Download and extract
+
 * Bowtie2 executables are available on sourceforge
 * download and extract the files
 
@@ -55,7 +57,7 @@ unzip bowtie2-2.4.1-macos-x86_64.zip
 ### Make Bowtie2 available in PATH
 
 
-### Add to bash_profile
+#### Add to bash_profile
 
 ```{bash, eval=FALSE}
 # start from the home directory

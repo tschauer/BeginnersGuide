@@ -372,8 +372,8 @@ summary {
 <ul>
 <li><a href="#setup-terminal">Setup Terminal</a></li>
 <li><a href="#install-bowtie2">Install Bowtie2</a><ul>
+<li><a href="#download-and-extract">Download and extract</a></li>
 <li><a href="#make-bowtie2-available-in-path">Make Bowtie2 available in PATH</a></li>
-<li><a href="#add-to-bash_profile">Add to bash_profile</a></li>
 </ul></li>
 <li><a href="#install-samtools">Install Samtools</a></li>
 <li><a href="#create-bowtie2-index">Create Bowtie2 Index</a></li>
@@ -405,6 +405,8 @@ mkdir Software</code></pre>
 </div>
 <div id="install-bowtie2" class="section level2">
 <h2>Install Bowtie2</h2>
+<div id="download-and-extract" class="section level3">
+<h3>Download and extract</h3>
 <ul>
 <li>Bowtie2 executables are available on sourceforge</li>
 <li>download and extract the files</li>
@@ -417,11 +419,11 @@ curl -LO https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.1/bowtie2
 
 # extract zip file
 unzip bowtie2-2.4.1-macos-x86_64.zip</code></pre>
+</div>
 <div id="make-bowtie2-available-in-path" class="section level3">
 <h3>Make Bowtie2 available in PATH</h3>
-</div>
-<div id="add-to-bash_profile" class="section level3">
-<h3>Add to bash_profile</h3>
+<div id="add-to-bash_profile" class="section level4">
+<h4>Add to bash_profile</h4>
 <pre class="bash"><code># start from the home directory
 cd ~   
 
@@ -440,6 +442,7 @@ source .bash_profile
 
 # print .bash_profile
 cat .bash_profile</code></pre>
+</div>
 </div>
 </div>
 <div id="install-samtools" class="section level2">
