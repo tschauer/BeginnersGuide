@@ -364,7 +364,7 @@ summary {
 
 <h1 class="title toc-ignore">Alignment using STAR</h1>
 <h4 class="author">Tamas Schauer</h4>
-<h4 class="date">02 June, 2020</h4>
+<h4 class="date">13 July, 2020</h4>
 
 </div>
 
@@ -379,6 +379,15 @@ summary {
 </ul>
 </div>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
 <div id="quick-intro-to-command-line" class="section level2">
 <h2>Quick Intro to Command Line</h2>
 <ul>
@@ -448,9 +457,8 @@ cd ~
 # create .bash_profile (if you don´t have it)
 touch .bash_profile
 
-# open .bash_profile in Atom or TextEdit (or which ever text editor)
+# open .bash_profile in Atom (or which ever text editor)
 open -a Atom .bash_profile
-open -a TextEdit .bash_profile
 
 # add the following line with your path of STAR to the .bash_profile file
 PATH=/Users/tschauer/Software/STAR-2.7.4a/bin/MacOSX_x86_64:$PATH

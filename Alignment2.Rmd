@@ -7,6 +7,15 @@ output:
         toc: true
         toc_depth: 3
 ---
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -99,9 +108,8 @@ cd ~
 # create .bash_profile (if you don´t have it)
 touch .bash_profile
 
-# open .bash_profile in Atom or TextEdit (or which ever text editor)
+# open .bash_profile in Atom (or which ever text editor)
 open -a Atom .bash_profile
-open -a TextEdit .bash_profile
 
 # add the following line with your path of STAR to the .bash_profile file
 PATH=/Users/tschauer/Software/STAR-2.7.4a/bin/MacOSX_x86_64:$PATH
@@ -115,7 +123,6 @@ cat .bash_profile
 ```
 
 
-
 ### Check Help Page 
 
 ```{bash, comment=NA}
@@ -126,8 +133,6 @@ cd ~
 STAR --help | head
 
 ```
-
-
 
 
 ## Create STAR Index 
