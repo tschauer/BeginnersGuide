@@ -22,26 +22,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Quick Intro to Command Line
+## Setup Terminal
 
 * Open the Terminal app from /Applications/Utilities on your Mac
-* Check the following commands
+* Make sure you use bash (Terminal > Preferences > Command should be **/bin/bash**)
 
 ```{sh, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
 # change to home directory
 cd ~
 
-# print working directory
-pwd
-
-# make new directory
+# make a Software directory
 mkdir Software
-
-# list files
-ls -l
-
-# manual page of cp command
-man cp
 ```
 
 
@@ -61,7 +52,7 @@ curl -LO https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.1/bowtie2
 unzip bowtie2-2.4.1-macos-x86_64.zip
 ```
 
-### Make Bowtie2 available for Terminal
+### Make Bowtie2 available in PATH
 
 
 ### Add to bash_profile

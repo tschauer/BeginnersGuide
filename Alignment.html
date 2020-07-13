@@ -370,9 +370,9 @@ summary {
 
 <div id="TOC">
 <ul>
-<li><a href="#quick-intro-to-command-line">Quick Intro to Command Line</a></li>
+<li><a href="#setup-terminal">Setup Terminal</a></li>
 <li><a href="#install-bowtie2">Install Bowtie2</a><ul>
-<li><a href="#make-bowtie2-available-for-terminal">Make Bowtie2 available for Terminal</a></li>
+<li><a href="#make-bowtie2-available-in-path">Make Bowtie2 available in PATH</a></li>
 <li><a href="#add-to-bash_profile">Add to bash_profile</a></li>
 </ul></li>
 <li><a href="#install-samtools">Install Samtools</a></li>
@@ -391,26 +391,17 @@ pre code {
   white-space: pre;
 }
 </style>
-<div id="quick-intro-to-command-line" class="section level2">
-<h2>Quick Intro to Command Line</h2>
+<div id="setup-terminal" class="section level2">
+<h2>Setup Terminal</h2>
 <ul>
 <li>Open the Terminal app from /Applications/Utilities on your Mac</li>
-<li>Check the following commands</li>
+<li>Make sure you use bash (Terminal &gt; Preferences &gt; Command should be <strong>/bin/bash</strong>)</li>
 </ul>
 <pre class="sh"><code># change to home directory
 cd ~
 
-# print working directory
-pwd
-
-# make new directory
-mkdir Software
-
-# list files
-ls -l
-
-# manual page of cp command
-man cp</code></pre>
+# make a Software directory
+mkdir Software</code></pre>
 </div>
 <div id="install-bowtie2" class="section level2">
 <h2>Install Bowtie2</h2>
@@ -426,8 +417,8 @@ curl -LO https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.1/bowtie2
 
 # extract zip file
 unzip bowtie2-2.4.1-macos-x86_64.zip</code></pre>
-<div id="make-bowtie2-available-for-terminal" class="section level3">
-<h3>Make Bowtie2 available for Terminal</h3>
+<div id="make-bowtie2-available-in-path" class="section level3">
+<h3>Make Bowtie2 available in PATH</h3>
 </div>
 <div id="add-to-bash_profile" class="section level3">
 <h3>Add to bash_profile</h3>

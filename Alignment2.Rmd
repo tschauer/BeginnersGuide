@@ -88,7 +88,7 @@ cd ~/Software/STAR-2.7.4a/bin/MacOSX_x86_64
 pwd
 ```
 
-### Make STAR available for Terminal
+### Make STAR available in PATH
 
 #### Option 1
 
