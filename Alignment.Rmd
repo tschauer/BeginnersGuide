@@ -100,7 +100,7 @@ make
 make install
 
 
-# add the following line with your path of Bowtie2 to the .bash_profile file
+# add the following line with your path of samtools to the .bash_profile file
 PATH=/Users/tschauer/Software/samtools-1.10:$PATH
 # save and close window
 
