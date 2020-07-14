@@ -101,7 +101,9 @@ cd Homer
 # set fragment length to fixed size (optional)
 makeTagDirectory H2AvChIP_GFP_IP.dir  -fragLength 150 ../BAM/H2AvChIP_GFP_IP.bam
 makeTagDirectory H2AvChIP_GFP_INP.dir -fragLength 150 ../BAM/H2AvChIP_GFP_INP.bam
+
 # useful information in tagInfo.txt
+cat H2AvChIP_GFP_IP.dir/tagInfo.txt 
 
 # coverage normalized tracks
 makeUCSCfile H2AvChIP_GFP_IP.dir  -o H2AvChIP_GFP_IP.Norm.bedgraph
@@ -118,6 +120,14 @@ pos2bed.pl H2AvChIP_GFP_IP.factor.txt > H2AvChIP_GFP_IP.factor.bed
 findPeaks H2AvChIP_GFP_IP.dir -i H2AvChIP_GFP_INP.dir -style histone -o H2AvChIP_GFP_IP.histone.txt
 pos2bed.pl H2AvChIP_GFP_IP.histone.txt > H2AvChIP_GFP_IP.histone.bed
 
+# useful information in the txt files
+head -n 38 H2AvChIP_GFP_IP.factor.txt
+
 # Details see on Homer´s webpage
 ```
 
+
+## Visualization of tracks
+
+* Download IGV browser from http://software.broadinstitute.org/software/igv/download
+* Choose your genome and load bedgraph and bed files
