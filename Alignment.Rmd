@@ -171,6 +171,7 @@ bowtie2 -p 2 -x  ~/Genomes/Dmelanogaster/dmel_genome -U H2AvChIP_GFP_IP_1.txt.gz
 ```
 
 
+
 ## Check Input and Output files
 
 ```{bash}
@@ -205,7 +206,24 @@ cat H2AvChIP_GFP_INP.txt
 ```
 
 
+## Sorting by Samtools
 
+```{bash, eval=FALSE}
+# one-liner for converting SAM to BAM
+# sort by coordinates
+# create BAM index
+samtools view -bS -@ 2 H2AvChIP_GFP_INP.sam | samtools sort - -@ 2 | tee H2AvChIP_GFP_INP.bam | samtools index - H2AvChIP_GFP_INP.bam.bai
+
+samtools view -bS -@ 2 H2AvChIP_GFP_IP.sam | samtools sort - -@ 2 | tee H2AvChIP_GFP_IP.bam | samtools index - H2AvChIP_GFP_IP.bam.bai
+
+# SAM files are not needed anymore
+rm H2AvChIP_GFP_INP.sam
+rm H2AvChIP_GFP_IP.sam
+
+# organize BAM files to a new BAM folder
+mkdir ../BAM
+mv *.bam* ../BAM
+```
 
 
 

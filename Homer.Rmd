@@ -1,0 +1,123 @@
+---
+title: "ChIP-seq analysis by Homer"
+author: Tamas Schauer
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+---
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Setup Terminal
+
+* Open the Terminal app from /Applications/Utilities on your Mac
+* Make sure you use bash (Terminal > Preferences > Command should be **/bin/bash**)
+
+```{sh, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+# change to home directory
+cd ~
+
+# make a Software directory
+mkdir Software
+```
+
+## Install Prerequisites
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+# homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# wget
+brew install wget
+```
+
+## Install Homer
+
+### Download and extract
+
+* Homer is available from http://homer.ucsd.edu/homer/
+* download and extract the files
+
+```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+# setup directory for Homer
+cd ~/Software
+mkdir Homer
+cd Homer
+
+# download 
+wget http://homer.ucsd.edu/homer/configureHomer.pl
+
+# run the configuration script
+perl configureHomer.pl -install
+```
+
+
+### Add to bash_profile
+
+```{bash, eval=FALSE}
+# start from the home directory
+cd ~   
+
+# open .bash_profile in Atom (or which ever text editor)
+open -a Atom .bash_profile
+
+# add the following line with your path of Homer to the .bash_profile file
+PATH=/Users/tschauer/Software/Homer/bin:$PATH
+# save and close window
+
+# source .bash_profile
+source .bash_profile
+```
+
+
+
+
+
+## Run Homer 
+
+```{bash, eval=FALSE}
+# start from Project folder
+cd ~/Projects/Project02
+
+# create Homer directory
+mkdir Homer
+cd Homer
+
+# create tag dir (bam files are in the BAM folder)
+# set fragment length to fixed size (optional)
+makeTagDirectory H2AvChIP_GFP_IP.dir  -fragLength 150 ../BAM/H2AvChIP_GFP_IP.bam
+makeTagDirectory H2AvChIP_GFP_INP.dir -fragLength 150 ../BAM/H2AvChIP_GFP_INP.bam
+# useful information in tagInfo.txt
+
+# coverage normalized tracks
+makeUCSCfile H2AvChIP_GFP_IP.dir  -o H2AvChIP_GFP_IP.Norm.bedgraph
+makeUCSCfile H2AvChIP_GFP_INP.dir -o H2AvChIP_GFP_INP.Norm.bedgraph
+
+# coverage and Input normalized tracks
+makeUCSCfile H2AvChIP_GFP_IP.dir -i H2AvChIP_GFP_INP.dir  -o H2AvChIP_GFP_IP.INPnorm.bedgraph
+
+# peak finding factor style (narrow peaks)
+findPeaks H2AvChIP_GFP_IP.dir -i H2AvChIP_GFP_INP.dir -style factor -o H2AvChIP_GFP_IP.factor.txt
+pos2bed.pl H2AvChIP_GFP_IP.factor.txt > H2AvChIP_GFP_IP.factor.bed
+
+# peak finding histone style (broad peaks)
+findPeaks H2AvChIP_GFP_IP.dir -i H2AvChIP_GFP_INP.dir -style histone -o H2AvChIP_GFP_IP.histone.txt
+pos2bed.pl H2AvChIP_GFP_IP.histone.txt > H2AvChIP_GFP_IP.histone.bed
+
+# Details see on Homer´s webpage
+```
+
