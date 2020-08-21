@@ -127,7 +127,7 @@ open -a Atom JE_demultiplex_SR.sh
 
 * Add the following code in the editor
 
-```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+```{shell, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
 #!/bin/sh
 
 for FILE in *R1.fastq.gz; do 
