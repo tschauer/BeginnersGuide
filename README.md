@@ -9,5 +9,8 @@
 [**ChIP-seq analysis with Homer**](https://htmlpreview.github.io/?https://github.com/tschauer/GuideLines/blob/master/Homer.html)
 * Install and run Homer for generating ChIP-seq tracks and peaks
 
+[**Organize code in Shell Scripts**](https://htmlpreview.github.io/?https://github.com/tschauer/GuideLines/blob/master/ShellScripts.html)
+* Learn how to write shell scripts for reproducible code
+
 [**Alignment with STAR**](https://htmlpreview.github.io/?https://github.com/tschauer/GuideLines/blob/master/Alignment2.html)
 * Basic tutorial how to install, setup and run STAR aligner
