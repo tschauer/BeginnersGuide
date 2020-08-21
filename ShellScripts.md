@@ -1,7 +1,7 @@
 ---
 title: "Organize code in Shell Scripts"
 author: Tamas Schauer
-date: '`r format(Sys.time(), "%d %B, %Y")`'
+date: '21 August, 2020'
 output: 
     html_document:
         toc: true
@@ -18,9 +18,7 @@ pre code {
 }
 </style>
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Use of Shell Scripts
 
@@ -42,7 +40,8 @@ Install Atom editor from https://atom.io
 
 ### Setup shell script file
 
-```{bash, eval=TRUE}
+
+```bash
 # change directory to your Software directory
 cd ~/Software/
 
@@ -59,11 +58,26 @@ open -a Atom my_first_shell_script.sh
 ls -l
 ```
 
+```
+## total 122704
+## -rw-r--r--    1 tschauer  staff   8710496 Jul 13 12:25 2.7.4a.zip
+## drwxr-xr-x   15 tschauer  staff       480 Jul 14 10:40 Homer
+## drwxr-xr-x   17 tschauer  staff       544 Jun  1 21:08 STAR-2.7.4a
+## drwxr-xr-x   28 tschauer  staff       896 Feb 28 23:43 bowtie2-2.4.1-macos-x86_64
+## -rw-r--r--    1 tschauer  staff  16048820 Jul 13 11:00 bowtie2-2.4.1-macos-x86_64.zip
+## drwxr-xr-x    5 tschauer  staff       160 Jun  2 13:50 je_2.0.RC
+## -rw-r--r--    1 tschauer  staff  31469100 Jun  2 13:50 je_2.0.RC.tar.gz
+## -rwxr--r--@   1 tschauer  staff        82 Aug 21 15:04 my_first_shell_script.sh
+## drwxr-xr-x  135 tschauer  staff      4320 Jul 13 11:20 samtools-1.10
+## -rw-r--r--    1 tschauer  staff   4721173 Jul 13 11:13 samtools-1.10.tar.bz2
+```
+
 ### Edit in Atom
 
 * Add the following code in the editor
 
-```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+
+```bash
 #!/bin/sh
 
 # this is a for loop
@@ -76,15 +90,43 @@ done
 
 * run from the command line
 
-```{bash, eval=TRUE}
+
+```bash
 # from the current directory
 cd ~/Software/
 ./my_first_shell_script.sh 
 ```
 
-```{bash, eval=TRUE}
+```
+## 0
+## 1
+## 2
+## 3
+## 4
+## 5
+## 6
+## 7
+## 8
+## 9
+```
+
+
+```bash
 # or from somewhere else
 ~/Software/my_first_shell_script.sh 
+```
+
+```
+## 0
+## 1
+## 2
+## 3
+## 4
+## 5
+## 6
+## 7
+## 8
+## 9
 ```
 
 
@@ -92,7 +134,8 @@ cd ~/Software/
 
 ### Reminder: Je demultiplexer has to be in PATH
 
-```{bash, eval=FALSE}
+
+```bash
 # start from the home directory
 cd ~   
 
@@ -109,7 +152,8 @@ source .bash_profile
 
 ### Setup shell script file
 
-```{bash, eval=TRUE}
+
+```bash
 # change to the folder where your FastQ files are
 cd ~/Projects/Project01/FastQ 
 
@@ -121,14 +165,15 @@ chmod 744 JE_demultiplex_SR.sh
 
 # open file in Atom and start edit from there
 open -a Atom JE_demultiplex_SR.sh
-````
+```
 
 
 ### Edit in Atom
 
 * Add the following code in the editor
 
-```{shell, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+
+```shell
 #!/bin/sh
 
 for FILE in *R1.fastq.gz; do 
@@ -152,7 +197,8 @@ done
 * R1 and R2 FastQ files and barcode txt file have to be in the same folder
 * run from the command line
 
-```{bash, eval=FALSE}
+
+```bash
 # change to the folder where your FastQ files are
 cd ~/Projects/Project01/FastQ 
 
@@ -168,7 +214,8 @@ cd ~/Projects/Project01/FastQ
 
 ### Setup shell script file
 
-```{bash, eval=TRUE}
+
+```bash
 # change to the folder where your FastQ files are
 cd ~/Projects/Project02/FastQ 
 
@@ -180,14 +227,15 @@ chmod 744 bowtie2_SR.sh
 
 # open file in Atom and start edit from there
 open -a Atom bowtie2_SR.sh
-````
+```
 
 
 ### Edit in Atom
 
 * Add the following code in the editor
 
-```{bash, comment=NA, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+
+```bash
 #!/bin/sh
 
 BOWTIE_INDEX="/Users/tschauer/Genomes/Dmelanogaster/dmel_genome"
@@ -215,7 +263,8 @@ done
 * FastQ files with *.txt.gz extension have to be in the same directory
 * run from the command line
 
-```{bash, eval=FALSE}
+
+```bash
 # change to the folder where your FastQ files are
 cd ~/Projects/Project02/FastQ 
 
