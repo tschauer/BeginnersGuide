@@ -125,7 +125,7 @@ cat .bash_profile
 
 ### Check Help Page 
 
-```{bash, comment=NA}
+```{sh, comment=NA}
 # start from the home directory
 cd ~   
 
